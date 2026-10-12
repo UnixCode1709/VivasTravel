@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Шенгенские визы | Оформление виз в Краснодаре</title>
+    <meta name="description" content="Оформление шенгенских виз в Италию, Испанию, Францию, Грецию под ключ туристическим агентством Вивас.">
+    
+    <!-- Favicon -->
+    <link class="favicon" rel="icon" type="image/png" href="assets/logo.png">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Liquid Gradient Background Blobs for Glassmorphism -->
+    <div class="liquid-bg-container">
+        <div class="liquid-blob blob-1"></div>
+        <div class="liquid-blob blob-2"></div>
+        <div class="liquid-blob blob-3"></div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="assets/logo.png" alt="Вивас Логотип" class="logo-img">
+                <span class="logo-text">ВИВАС</span>
+            </a>
+            
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html#hero" class="nav-link">ГЛАВНАЯ</a></li>
+                    <li><a href="index.html#visas" class="nav-link active">ВИЗЫ</a></li>
+                    <li><a href="index.html#tours" class="nav-link">ТУРЫ</a></li>
+                    <li><a href="index.html#about" class="nav-link">О НАС</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="theme-toggle-btn" aria-label="Сменить тему" style="margin-right: 8px;">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <button class="btn btn-secondary contact-trigger" id="contactBtn">КОНТАКТЫ</button>
+                <button class="mobile-menu-btn" aria-label="Открыть меню">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav">
+        <ul class="mobile-nav-list">
+            <li><a href="index.html#hero" class="mobile-nav-link">ГЛАВНАЯ</a></li>
+            <li><a href="index.html#visas" class="mobile-nav-link">ВИЗЫ</a></li>
+            <li><a href="index.html#tours" class="mobile-nav-link">ТУРЫ</a></li>
+            <li><a href="index.html#about" class="mobile-nav-link">О НАС</a></li>
+            <li><button class="btn btn-secondary contact-trigger w-full mt-4">КОНТАКТЫ</button></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <main class="section" style="padding-top: 140px;">
+        <div class="container">
+            <!-- Back navigation link -->
+            <div style="margin-bottom: 30px;">
+                <a href="index.html#visas" class="btn btn-outline" style="padding: 10px 20px; text-transform: none; display: inline-flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-arrow-left"></i> Назад к направлениям
+                </a>
+            </div>
+
+            <div class="section-header reveal">
+                <h1 class="section-title">Шенгенские визы</h1>
+                <p class="section-subtitle">Выберите интересующую вас страну Шенгенской зоны. Мы поможем подготовить все необходимые документы и запишем на биометрию.</p>
+            </div>
+
+            <!-- Grid of Schengen Countries -->
+            <div class="visas-grid">
+                <!-- Country 1: Italy -->
+                <div class="visa-card reveal delay-100">
+                    <div class="visa-img-container">
+                        <img src="assets/schengen-italy.png" alt="Шенгенская виза в Италию" class="visa-img">
+                        <div class="visa-badge">Популярно</div>
+                    </div>
+                    <div class="visa-info">
+                        <h3 class="visa-destination">Италия</h3>
+                        <p class="visa-description">Оформление туристических и деловых шенгенских виз в Италию. Выдача виз на срок от полугода до 5 лет.</p>
+                        <ul class="visa-features">
+                            <li><i class="fa-regular fa-clock"></i> <strong>Срок:</strong> от 10 рабочих дней</li>
+                            <li><i class="fa-solid fa-wallet"></i> <strong>Стоимость:</strong> от 90 €</li>
+                            <li><i class="fa-regular fa-circle-check"></i> Высокий процент многократных виз</li>
+                        </ul>
+                        <button class="btn btn-primary w-full booking-trigger" data-type="Шенген в Италию">Подать заявку</button>
+                    </div>
+                </div>
+
+                <!-- Country 2: Spain -->
+                <div class="visa-card reveal delay-200">
+                    <div class="visa-img-container">
+                        <img src="assets/schengen-spain.png" alt="Шенгенская виза в Испанию" class="visa-img">
+                    </div>
+                    <div class="visa-info">
+                        <h3 class="visa-destination">Испания</h3>
+                        <p class="visa-description">Виза в Испанию с минимальным пакетом документов. Отличный вариант для быстрого въезда в Европу.</p>
+                        <ul class="visa-features">
+                            <li><i class="fa-regular fa-clock"></i> <strong>Срок:</strong> от 7 рабочих дней</li>
+                            <li><i class="fa-solid fa-wallet"></i> <strong>Стоимость:</strong> от 85 €</li>
+                            <li><i class="fa-regular fa-circle-check"></i> Быстрое рассмотрение консульством</li>
+                        </ul>
+                        <button class="btn btn-primary w-full booking-trigger" data-type="Шенген в Испанию">Подать заявку</button>
+                    </div>
+                </div>
+
+                <!-- Country 3: France -->
+                <div class="visa-card reveal delay-300">
+                    <div class="visa-img-container">
+                        <img src="assets/schengen-france.png" alt="Шенгенская виза во Францию" class="visa-img">
+                        <div class="visa-badge badge-premium">Выбор туристов</div>
+                    </div>
+                    <div class="visa-info">
+                        <h3 class="visa-destination">Франция</h3>
+                        <p class="visa-description">Идеальное направление для получения долгосрочной визы (до 5 лет) при наличии хорошей визовой истории.</p>
+                        <ul class="visa-features">
+                            <li><i class="fa-regular fa-clock"></i> <strong>Срок:</strong> от 12 рабочих дней</li>
+                            <li><i class="fa-solid fa-wallet"></i> <strong>Стоимость:</strong> от 95 €</li>
+                            <li><i class="fa-regular fa-circle-check"></i> Высокие шансы на длительную визу</li>
+                        </ul>
+                        <button class="btn btn-primary w-full booking-trigger" data-type="Шенген во Францию">Подать заявку</button>
+                    </div>
+                </div>
+
+                <!-- Country 4: Greece -->
+                <div class="visa-card reveal delay-100">
+                    <div class="visa-img-container">
+                        <img src="assets/schengen-greece.png" alt="Шенгенская виза в Грецию" class="visa-img">
+                    </div>
+                    <div class="visa-info">
+                        <h3 class="visa-destination">Греция</h3>
+                        <p class="visa-description">Самая быстрая подача документов. Отлично подходит для срочных поездок на греческие курорты.</p>
+                        <ul class="visa-features">
+                            <li><i class="fa-regular fa-clock"></i> <strong>Срок:</strong> от 5 рабочих дней</li>
+                            <li><i class="fa-solid fa-wallet"></i> <strong>Стоимость:</strong> от 80 €</li>
+                            <li><i class="fa-regular fa-circle-check"></i> Минимальный срок ожидания записи</li>
+                        </ul>
+                        <button class="btn btn-primary w-full booking-trigger" data-type="Шенген в Грецию">Подать заявку</button>
+                    </div>
+                </div>
+
+                <!-- Country 5: Hungary -->
+                <div class="visa-card reveal delay-200">
+                    <div class="visa-img-container">
+                        <img src="assets/schengen-hungary.png" alt="Шенгенская виза в Венгрию" class="visa-img">
+                    </div>
+                    <div class="visa-info">
+                        <h3 class="visa-destination">Венгрия</h3>
+                        <p class="visa-description">Один из самых бюджетных и надежных вариантов для въезда в шенгенскую зону. Лояльные условия для туристов.</p>
+                        <ul class="visa-features">
+                            <li><i class="fa-regular fa-clock"></i> <strong>Срок:</strong> от 8 рабочих дней</li>
+                            <li><i class="fa-solid fa-wallet"></i> <strong>Стоимость:</strong> от 80 €</li>
+                            <li><i class="fa-regular fa-circle-check"></i> Лояльное отношение к новым паспортам</li>
+                        </ul>
+                        <button class="btn btn-primary w-full booking-trigger" data-type="Шенген в Венгрию">Подать заявку</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col brand-col">
+                <a href="index.html" class="footer-logo">
+                    <img src="assets/logo.png" alt="Вивас Логотип" class="footer-logo-img">
+                    <span>ВИВАС</span>
+                </a>
+                <p class="footer-brand-desc">Ваш надежный партнер в мире путешествий. Оформляем визы с высокой вероятностью одобрения и подбираем туры мечты с 2010 года.</p>
+                <div class="social-links">
+                    <a href="https://t.me/" target="_blank" aria-label="Telegram" class="social-link"><i class="fa-brands fa-telegram"></i></a>
+                    <a href="https://wa.me/79628538393" target="_blank" aria-label="WhatsApp" class="social-link"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://vk.com/" target="_blank" aria-label="VKontakte" class="social-link"><i class="fa-brands fa-vk"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-col links-col">
+                <h4 class="footer-title">Навигация</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html#hero">Главная</a></li>
+                    <li><a href="index.html#visas">Оформление виз</a></li>
+                    <li><a href="index.html#tours">Популярные туры</a></li>
+                    <li><a href="index.html#about">О нашей компании</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col contacts-col">
+                <h4 class="footer-title">Контакты</h4>
+                <ul class="footer-contacts">
+                    <li><i class="fa-solid fa-phone"></i> <a href="tel:+79628538393">+7 (962) 853-83-93</a></li>
+                    <li><i class="fa-solid fa-envelope"></i> <a href="mailto:vivastravel@gmail.com">vivastravel@gmail.com</a></li>
+                    <li><i class="fa-solid fa-location-dot"></i> г. Краснодар, ул. Ставропольская, д. 176, офис 16</li>
+                    <li><i class="fa-regular fa-clock"></i> Пн–Пт: 10:00 – 17:00</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="container footer-bottom">
+            <p>&copy; 2026 ООО «Вивас». Все права защищены. Перенос сайта с Tilda на собственный хостинг.</p>
+        </div>
+    </footer>
+
+    <!-- Floating Help Button Widget -->
+    <button class="floating-help-btn" id="helpBtn" aria-label="Помощь и FAQ">
+        <i class="fa-solid fa-question"></i>
+    </button>
+
+    <!-- Booking Modal -->
+    <div class="modal" id="bookingModal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content-wrapper">
+            <div class="modal-content">
+                <button class="modal-close" aria-label="Закрыть модальное окно">&times;</button>
+                <h3 class="modal-title">Оставить заявку</h3>
+                <p class="modal-subtitle">Заполните форму, и наш визовый эксперт/тур-менеджер свяжется с вами в течение 15 минут для консультации.</p>
+                
+                <form id="bookingForm" class="modal-form">
+                    <input type="hidden" name="direction" id="formDirection" value="">
+                    
+                    <div class="form-group">
+                        <label for="userName">Ваше имя</label>
+                        <input type="text" id="userName" name="name" placeholder="Иван Иванов" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="userPhone">Номер телефона</label>
+                        <input type="tel" id="userPhone" name="phone" placeholder="+7 (962) 853-83-93" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="userEmail">Электронная почта</label>
+                        <input type="email" id="userEmail" name="email" placeholder="example@mail.ru" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="userDirection">Направление / Вопрос</label>
+                        <input type="text" id="userDirection" placeholder="Например: Шенгенская виза в Италию" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="userMessage">Комментарий (необязательно)</label>
+                        <textarea id="userMessage" name="message" rows="3" placeholder="Укажите желаемые даты, количество человек или другие подробности"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary w-full mt-2">Отправить заявку</button>
+                    
+                    <p class="form-disclaimer">Нажимая кнопку, вы соглашаетесь на обработку персональных данных в соответствии с политикой конфиденциальности.</p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contacts Modal -->
+    <div class="modal" id="contactsModal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content-wrapper">
+            <div class="modal-content">
+                <button class="modal-close" aria-label="Закрыть модальное окно">&times;</button>
+                <h3 class="modal-title">Наши контакты</h3>
+                <p class="modal-subtitle">Мы всегда рады видеть вас в нашем офисе или ответить на любые вопросы по телефону.</p>
+                
+                <div class="contacts-modal-info">
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+                        <div>
+                            <h4>Телефон</h4>
+                            <p><a href="tel:+79628538393" class="accent-link">+7 (962) 853-83-93</a></p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+                        <div>
+                            <h4>Почта</h4>
+                            <p><a href="mailto:vivastravel@gmail.com" class="accent-link">vivastravel@gmail.com</a></p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div>
+                            <h4>Адрес офиса</h4>
+                            <p>г. Краснодар, ул. Ставропольская, д. 176, офис 16</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="map-placeholder">
+                    <div class="map-loading-overlay">
+                        <i class="fa-regular fa-map map-icon"></i>
+                        <span>Интерактивная карта</span>
+                        <p class="text-sm text-gray-500">Яндекс.Карты / Google Maps</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Help / FAQ Modal -->
+    <div class="modal" id="helpModal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content-wrapper">
+            <div class="modal-content max-w-lg">
+                <button class="modal-close" aria-label="Закрыть">&times;</button>
+                <h3 class="modal-title">Часто задаваемые вопросы</h3>
+                
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-trigger">Какие документы нужны для визы шенген? <i class="fa-solid fa-chevron-down"></i></button>
+                        <div class="faq-answer">
+                            <p>Обычно требуются: загранпаспорт (действующий еще 3+ месяца после поездки), выписка из банка об остатке средств, справка с работы, бронь отеля и билетов, а также страховка. Точный список зависит от выбранной страны. Наш менеджер составит для вас персональный список.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-trigger">Что если мне откажут в визе? <i class="fa-solid fa-chevron-down"></i></button>
+                        <div class="faq-answer">
+                            <p>Мы тщательно проверяем документы и подаем их в строгом соответствии с требованиями консульств, поэтому процент отказов у нас менее 1.3%. В случае отказа из-за технической ошибки по нашей вине, мы подадим документы повторно бесплатно или вернем стоимость услуг.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="help-cta">
+                    <p>Не нашли ответ на свой вопрос?</p>
+                    <button class="btn btn-primary booking-trigger w-full mt-2" data-type="Вопрос из FAQ">Задать вопрос менеджеру</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content-wrapper">
+            <div class="modal-content text-center py-8">
+                <div class="success-icon-wrapper">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <h3 class="modal-title mt-4">Заявка успешно принята!</h3>
+                <p class="modal-subtitle">Спасибо за ваше обращение. Визовый специалист или тур-менеджер компании «Вивас» свяжется с вами в течение 15 минут.</p>
+                <button class="btn btn-primary modal-close-success mt-4">Отлично</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
