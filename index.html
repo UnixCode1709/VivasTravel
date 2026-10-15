@@ -14,8 +14,8 @@
     <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
     
     <!-- CSS stylesheet -->
-    <link rel="stylesheet" href="style.css?v=20261015b">
-<link rel="stylesheet" href="updates.css?v=20261015b"></head>
+    <link rel="stylesheet" href="style.css?v=20261015c">
+<link rel="stylesheet" href="updates.css?v=20261015c"></head>
 <body>
 
     <!-- Liquid Gradient Background Blobs for Glassmorphism -->
@@ -104,13 +104,9 @@
                             <div class="visa-badge">Популярно</div>
                         </div>
                         <div class="visa-info">
-                            <h3 class="visa-destination"><a href="schengen.html" class="hover-link">Европа (Шенген)</a></h3>
+                            <h3 class="visa-destination"><a href="schengen.html" class="hover-link">Европа: классика жанра</a></h3>
                             <p class="visa-description">Оформление шенгенских виз в Испанию, Италию, Францию и другие страны ЕС под ключ. Помощь со сложными кейсами.</p>
-                            <ul class="visa-features">
-                                <li><i class="fa-regular fa-clock"></i> <strong>Срок:</strong> уточняется при консультации</li>
-                                <li><i class="fa-solid fa-wallet"></i> <strong>Стоимость:</strong> по запросу</li>
-                                <li><i class="fa-regular fa-circle-check"></i> Личная подача или без присутствия</li>
-                            </ul>
+                            
                             <a href="schengen.html" class="btn btn-primary w-full">Подробнее</a>
                         </div>
                     </div>
@@ -121,13 +117,9 @@
                             <a href="asia.html"><img src="assets/visa-asia.png" alt="Визы в страны Азии" class="visa-img"></a>
                         </div>
                         <div class="visa-info">
-                            <h3 class="visa-destination"><a href="asia.html" class="hover-link">Азия</a></h3>
+                            <h3 class="visa-destination"><a href="asia.html" class="hover-link">Азия: восток дело тонкое</a></h3>
                             <p class="visa-description">Туристические, деловые и многократные визы в Китай, Японию, Южную Корею, Сингапур и другие азиатские страны.</p>
-                            <ul class="visa-features">
-                                <li><i class="fa-regular fa-clock"></i> <strong>Срок:</strong> уточняется при консультации</li>
-                                <li><i class="fa-solid fa-wallet"></i> <strong>Стоимость:</strong> по запросу</li>
-                                <li><i class="fa-regular fa-circle-check"></i> Минимальный пакет документов</li>
-                            </ul>
+                            
                             <a href="asia.html" class="btn btn-primary w-full">Подробнее</a>
                         </div>
                     </div>
@@ -135,18 +127,14 @@
                     <!-- Visa 3: UK -->
                     <div class="visa-card reveal delay-300">
                         <div class="visa-img-container">
-                            <a href="uk.html" tabindex="-1"><img src="assets/visa-uk.png" alt="Виза в Великобританию" class="visa-img"></a>
-                            <div class="visa-badge badge-premium">Премиум</div>
+                            <a href="world.html" tabindex="-1"><img src="assets/visa-uk.png" alt="Путешествия по миру" class="visa-img"></a>
+                            
                         </div>
                         <div class="visa-info">
-                            <h3 class="visa-destination"><a href="uk.html">Великобритания</a></h3>
-                            <p class="visa-description">Подробный аудит ваших документов, сертифицированный перевод на английский, заполнение анкет и запись на биометрию.</p>
-                            <ul class="visa-features">
-                                <li><i class="fa-regular fa-clock"></i> <strong>Срок:</strong> уточняется при консультации</li>
-                                <li><i class="fa-solid fa-wallet"></i> <strong>Стоимость:</strong> по запросу</li>
-                                <li><i class="fa-regular fa-circle-check"></i> Многократные визы на 6 месяцев, 2 и 5 лет</li>
-                            </ul>
-                            <a class="btn btn-primary w-full" href="uk.html">Подробнее</a>
+                            <h3 class="visa-destination"><a href="world.html">Мир: продолжение следует</a></h3>
+                            <p class="visa-description">Оформление визы в любую точку мира — Америка, Австралия, Африка, Ближний Восток.</p>
+                            
+                            <a class="btn btn-primary w-full" href="world.html">Подробнее</a>
                         </div>
                     </div>
                 </div>
@@ -330,7 +318,7 @@
                     
                     <div class="form-group">
                         <label for="userDirection">Направление / Вопрос</label>
-                        <input type="text" id="userDirection" placeholder="Например: Шенгенская виза в Италию" required>
+                        <input type="text" id="userDirection" name="direction" placeholder="Например: Шенгенская виза в Италию" required>
                     </div>
                     
                     <div class="form-group">
@@ -338,7 +326,7 @@
                         <textarea id="userMessage" name="message" rows="3" placeholder="Укажите желаемые даты, количество человек или другие подробности"></textarea>
                     </div>
                     
-                    <label class="consent-check"><input type="checkbox" name="personalConsent" id="personalConsent" required><span>Я даю <a href="consent.html" target="_blank" rel="noopener">согласие на обработку персональных данных</a></span></label><p class="form-disclaimer"><a href="privacy.html" target="_blank" rel="noopener">Политика обработки персональных данных</a></p><button type="submit" class="btn btn-primary w-full mt-2" disabled>Подготовить письмо</button><p id="formStatus" class="form-disclaimer" role="status" aria-live="polite"></p><a class="btn btn-outline w-full" href="https://wa.me/79628538393" target="_blank" rel="noopener">Написать в WhatsApp</a>
+                    <div class="form-group"><label for="contactChannel">Как отправить заявку</label><select id="contactChannel" name="contactChannel"><option value="whatsapp">Через WhatsApp</option><option value="email">Через почтовую программу</option></select><p class="form-disclaimer">На следующем шаге откроется готовое сообщение. Проверьте его и нажмите «Отправить» в выбранном приложении.</p></div><label class="consent-check"><input type="checkbox" name="personalConsent" id="personalConsent" required><span>Я даю <a href="consent.html" target="_blank" rel="noopener">согласие на обработку персональных данных</a></span></label><p class="form-disclaimer"><a href="privacy.html" target="_blank" rel="noopener">Политика обработки персональных данных</a></p><button type="submit" class="btn btn-primary w-full mt-2">Подготовить сообщение</button><p id="formStatus" class="form-disclaimer" role="status" aria-live="polite"></p><a class="btn btn-outline w-full" href="https://wa.me/79628538393" target="_blank" rel="noopener">Написать в WhatsApp</a>
                     
                     
                 </form>
@@ -367,7 +355,7 @@
                         <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
                         <div>
                             <h4>Почта</h4>
-                            <p><a href="mailto:vivastravel@gmail.com" class="accent-link">vivastravel@gmail.com</a></p>
+                            <p><a href="mailto:vivastravel@gmail.com" class="accent-link">vivastravel@gmail.com</a></p><div class="contact-messengers"><a href="https://t.me/vivasTravel" target="_blank" rel="noopener noreferrer">Telegram ↗</a><a href="https://max.ru/u/f9LHodD0cOKSGWOmBkcq-3GG0VH6CwCwtqaBM-TUFSDmV4PEh70MXGfbOBo" target="_blank" rel="noopener noreferrer">MAX ↗</a><a href="https://yandex.ru/maps/org/1258116825/reviews?reviews%5BpublicId%5D=v11wyyp1dd1f4jahwqdvftm1w0&amp;si=v11wyyp1dd1f4jahwqdvftm1w0&amp;utm_source=my_review" target="_blank" rel="noopener noreferrer">Отзывы на Яндексе ↗</a></div>
                         </div>
                     </div>
                     <div class="info-item">
@@ -423,6 +411,6 @@
         </div>
     </div>
 
-<aside class="cookie-banner" id="cookieBanner" role="region" aria-label="Настройки cookie" hidden><div class="cookie-copy"><strong>Файлы cookie и ваша приватность</strong><p>Продолжая использовать сайт, Вы даете согласие ООО «КП «ВИВАС» (ИНН 2308181057) на обработку файлов cookies и пользовательских данных, собираемых в том числе посредством агрегатора статистики посетителей веб-сайтов «Яндекс.Метрика», в целях ведения статистики посещений сайта в соответствии с Политикой обработки персональных данных.</p><p class="cookie-note">Необязательные инструменты подключаются только после вашего согласия. Сейчас Яндекс.Метрика на сайте не подключена.</p><a href="privacy.html">Политика обработки персональных данных</a></div><div class="cookie-actions"><button class="btn btn-primary" type="button" data-cookie-accept>Согласен</button><button class="btn btn-outline" type="button" data-cookie-reject>Только необходимые</button></div></aside>    <script src="site-config.js?v=20261015b"></script><script src="script.js?v=20261015b"></script><script src="updates.js?v=20261015b"></script>
+<aside class="cookie-banner" id="cookieBanner" role="region" aria-label="Настройки cookie" hidden><div class="cookie-copy"><strong>Файлы cookie и ваша приватность</strong><p>Продолжая использовать сайт, Вы даете согласие ООО «КП «ВИВАС» (ИНН 2308181057) на обработку файлов cookies и пользовательских данных, собираемых в том числе посредством агрегатора статистики посетителей веб-сайтов «Яндекс.Метрика», в целях ведения статистики посещений сайта в соответствии с Политикой обработки персональных данных.</p><p class="cookie-note">Необязательные инструменты подключаются только после вашего согласия. Сейчас Яндекс.Метрика на сайте не подключена.</p><a href="privacy.html">Политика обработки персональных данных</a></div><div class="cookie-actions"><button class="btn btn-primary" type="button" data-cookie-accept>Согласен</button><button class="btn btn-outline" type="button" data-cookie-reject>Только необходимые</button></div></aside>    <script src="site-config.js?v=20261015c"></script><script src="script.js?v=20261015c"></script><script src="updates.js?v=20261015c"></script>
 </body>
 </html>

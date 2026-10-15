@@ -199,9 +199,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const consent = bookingForm.querySelector('[name="personalConsent"]');
         const submit = bookingForm.querySelector('[type="submit"]');
         const status = document.getElementById('formStatus');
-        const syncConsent = () => { submit.disabled = !consent.checked; };
+        const syncConsent = () => { submit.disabled = false; };
         consent.addEventListener('change', syncConsent);
-        bookingForm.addEventListener('reset', () => { submit.disabled = true; });
+        bookingForm.addEventListener('reset', syncConsent);
         syncConsent();
         bookingForm.addEventListener('submit', (event) => {
             event.preventDefault();
@@ -213,11 +213,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Комментарий: ' + (values.get('message') || ''),
                 'Согласие на обработку персональных данных: предоставлено.',
                 'Документ: ' + new URL('consent.html', location.href).href].join('\n');
-            const href = 'mailto:vivastravel@gmail.com?subject=' + encodeURIComponent('Обращение с сайта: ' + direction) + '&body=' + encodeURIComponent(body);
+            const channel = bookingForm.querySelector('[name="contactChannel"]')?.value || 'whatsapp';
+            const href = channel === 'email'
+                ? 'mailto:vivastravel@gmail.com?subject=' + encodeURIComponent('Обращение с сайта: ' + direction) + '&body=' + encodeURIComponent(body)
+                : 'https://wa.me/79628538393?text=' + encodeURIComponent('Заявка с сайта ВИВАС\n' + body);
             const link = document.createElement('a');
             link.href = href;
+            if (channel === 'whatsapp') { link.target = '_blank'; link.rel = 'noopener noreferrer'; }
             link.click();
-            status.textContent = 'Откроется почтовая программа. Проверьте письмо и нажмите «Отправить» в ней. Пока вы не отправили письмо, менеджер не получил обращение. Если программа не открылась, напишите на vivastravel@gmail.com или в WhatsApp.';
+            status.replaceChildren();
+            const note = document.createElement('span');
+            note.textContent = channel === 'email'
+                ? 'Проверьте письмо и нажмите «Отправить» в почтовой программе. Менеджер получит заявку после отправки. '
+                : 'Проверьте сообщение и нажмите «Отправить» в WhatsApp. Менеджер получит заявку после отправки. ';
+            const retry = link.cloneNode(); retry.textContent = 'Открыть сообщение ещё раз';
+            status.append(note, retry);
         });
     }
 
