@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
     };
 
-    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+    mobileMenuBtn?.addEventListener('click', toggleMobileMenu);
 
     mobileNavLinks.forEach(link => {
         link.addEventListener('click', () => {
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const toggleTheme = () => {
         const isDark = document.body.classList.toggle('dark-theme');
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        try { localStorage.setItem('theme', isDark ? 'dark' : 'light'); } catch {}
         updateToggleIcons(isDark);
     };
 
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Check saved theme on load
-    const savedTheme = localStorage.getItem('theme');
+    let savedTheme; try { savedTheme = localStorage.getItem('theme'); } catch {}
     if (savedTheme === 'dark') {
         document.body.classList.add('dark-theme');
         updateToggleIcons(true);
@@ -68,9 +68,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const handleScroll = () => {
         // Sticky header class toggle
         if (window.scrollY > 50) {
-            header.classList.add('scrolled');
+            header?.classList.add('scrolled');
         } else {
-            header.classList.remove('scrolled');
+            header?.classList.remove('scrolled');
         }
 
         // Active link tracking
@@ -109,12 +109,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Open Modal Function
     const openModal = (modalElement) => {
+        if (!modalElement) return;
         modalElement.classList.add('active');
+        modalElement.setAttribute('role', 'dialog');
+        modalElement.setAttribute('aria-modal', 'true');
+        modalElement.dataset.previousFocus = document.activeElement?.id || '';
+        modalElement.querySelector('button, a, input')?.focus();
         document.body.style.overflow = 'hidden';
     };
 
     // Close Modal Function
     const closeModal = (modalElement) => {
+        if (!modalElement) return;
         modalElement.classList.remove('active');
         // Only restore scroll if no other modal is active
         const anyActive = Array.from(modals).some(m => m.classList.contains('active') && m !== modalElement);
@@ -122,6 +128,18 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.style.overflow = '';
         }
     };
+
+    document.addEventListener('keydown', (event) => {
+        const active = document.querySelector('.modal.active');
+        if (!active) return;
+        if (event.key === 'Escape') { closeModal(active); document.querySelector('.booking-trigger, .contact-trigger')?.focus(); }
+        if (event.key === 'Tab') {
+            const nodes = [...active.querySelectorAll('button:not([disabled]), a[href], input:not([type="hidden"]), textarea')].filter(el => el.offsetParent !== null);
+            const first = nodes[0], last = nodes[nodes.length - 1];
+            if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+            else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+        }
+    });
 
     // Attach click events to close buttons & backdrops
     modals.forEach(modal => {
@@ -176,33 +194,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* ==========================================================================
-       FORM SUBMISSION & FAKE API CALL
-       ========================================================================== */
+    // Prepare a message locally. The visitor sends it in their mail application.
     if (bookingForm) {
-        bookingForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const submitBtn = bookingForm.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-            
-            // Visual loading state
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Отправка...';
-            
-            // Simulate API request delay
-            setTimeout(() => {
-                // Reset loading state
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalText;
-                
-                // Clear input form
-                bookingForm.reset();
-                
-                // Transition modals
-                closeModal(bookingModal);
-                openModal(successModal);
-            }, 1000);
+        const consent = bookingForm.querySelector('[name="personalConsent"]');
+        const submit = bookingForm.querySelector('[type="submit"]');
+        const status = document.getElementById('formStatus');
+        const syncConsent = () => { submit.disabled = !consent.checked; };
+        consent.addEventListener('change', syncConsent);
+        bookingForm.addEventListener('reset', () => { submit.disabled = true; });
+        syncConsent();
+        bookingForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            if (!consent.checked || !bookingForm.reportValidity()) return;
+            const values = new FormData(bookingForm);
+            const direction = userDirectionInput.value.trim();
+            const body = ['Имя: ' + values.get('name'), 'Телефон: ' + values.get('phone'),
+                'Почта: ' + values.get('email'), 'Направление: ' + direction,
+                'Комментарий: ' + (values.get('message') || ''),
+                'Согласие на обработку персональных данных: предоставлено.',
+                'Документ: ' + new URL('consent.html', location.href).href].join('\n');
+            const href = 'mailto:vivastravel@gmail.com?subject=' + encodeURIComponent('Обращение с сайта: ' + direction) + '&body=' + encodeURIComponent(body);
+            const link = document.createElement('a');
+            link.href = href;
+            link.click();
+            status.textContent = 'Откроется почтовая программа. Проверьте письмо и нажмите «Отправить» в ней. Пока вы не отправили письмо, менеджер не получил обращение. Если программа не открылась, напишите на vivastravel@gmail.com или в WhatsApp.';
         });
     }
 
@@ -230,7 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
        INTERACTIVE BACKGROUND GLOW (MOUSE FOLLOW)
        ========================================================================== */
     const bgContainer = document.querySelector('.liquid-bg-container');
-    if (bgContainer && window.matchMedia('(pointer: fine)').matches) {
+    if (bgContainer && !window.matchMedia('(prefers-reduced-motion: reduce)').matches && window.matchMedia('(pointer: fine)').matches) {
         // Only run on devices with a mouse (pointer: fine)
         const interactiveBlob = document.createElement('div');
         interactiveBlob.className = 'liquid-blob interactive-glow-blob';
