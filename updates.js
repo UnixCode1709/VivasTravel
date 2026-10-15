@@ -21,6 +21,16 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     const enableOptionalTools = () => {
         if (!allowed()) return;
+        const mount = document.getElementById('flightWidget');
+        const widgetURL = safeURL(config.aviasalesWidgetUrl);
+        if (mount && widgetURL && new URL(widgetURL).hostname === 'tpwdg.com' && !mount.querySelector('script')) {
+            mount.replaceChildren();
+            const status = document.createElement('p'); status.textContent = 'Загружаем поиск авиабилетов…'; status.setAttribute('role', 'status'); mount.append(status);
+            const widget = document.createElement('script'); widget.src = widgetURL; widget.async = true; widget.charset = 'utf-8';
+            widget.addEventListener('load', () => status.remove());
+            widget.addEventListener('error', () => { status.textContent = 'Форма временно недоступна. Воспользуйтесь ссылкой «Найти авиабилеты» выше.'; });
+            mount.append(widget);
+        }
         // No third-party analytics request is made without affirmative consent.
         const id = String(config.metrikaId || '');
         if (/^\d+$/.test(id) && !document.querySelector('[data-vivas-metrika]')) {
@@ -38,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try { localStorage.setItem(key, JSON.stringify(choice)); } catch {}
         banner.hidden = true;
         if (value === 'all') enableOptionalTools();
-        else if (wasAllowed && config.metrikaId) { window.ym?.(Number(config.metrikaId), 'destruct'); location.reload(); }
+        else if (wasAllowed) { if (config.metrikaId) window.ym?.(Number(config.metrikaId), 'destruct'); location.reload(); }
     };
     if (banner) {
         banner.hidden = Boolean(choice && ['all', 'necessary'].includes(choice.value));
@@ -53,5 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const a = document.createElement('a'); a.href = url; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.textContent = title; a.className = 'text-button'; node.append(a);
         });
     }
+    document.querySelector('[data-enable-flight-widget]')?.addEventListener('click', () => save('all'));
     applyPartners(); enableOptionalTools();
 });
