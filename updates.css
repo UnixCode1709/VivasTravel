@@ -85,5 +85,9 @@ button:disabled { cursor:not-allowed; opacity:.5; }
 .modal-form select { width:100%; padding:12px; border:1px solid var(--glass-border); border-radius:10px; background:var(--bg-base); color:var(--text-dark); font:inherit; }
 .contact-messengers { display:flex; flex-wrap:wrap; gap:12px; margin-top:14px; font-size:.9rem; }
 .contact-messengers a { color:var(--color-teal); text-decoration:underline; }
+.modal { visibility:hidden; }
+.modal.active { visibility:visible; }
+.modal-content-wrapper { max-height:calc(100dvh - 32px); overflow-y:auto; overscroll-behavior:contain; border-radius:var(--border-radius-md); }
+@media(max-width:640px) { .modal-content { padding:30px 22px; } }
 @media(max-width:640px) { .visa-price-panel { grid-template-columns:1fr; gap:12px; padding:22px; } .visa-actions { flex-direction:column; } }
 @media(max-width:640px) { .flight-widget-panel { padding:16px; } .widget-consent { padding:16px; } }
