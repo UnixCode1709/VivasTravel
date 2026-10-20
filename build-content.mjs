@@ -7,7 +7,8 @@ for (const [slug, item] of Object.entries(data)) {
     if (!/^[a-z-]+$/.test(slug) || !item.intro || !item.price) throw new Error('Invalid visa content');
     const path = new URL(`${slug}.html`, base);
     let page = await readFile(path, 'utf8');
-    page = page.replace(/(<p class="detail-lead">)[\s\S]*?(<\/p>)/, (_, a, b) => a + escape(item.intro) + b);
+    const introduction = `<div class="detail-lead">${item.intro.split(/\n\s*\n/).map(paragraph => `<p>${escape(paragraph)}</p>`).join('')}</div>`;
+    page = page.replace(/<p class="detail-lead">[\s\S]*?<\/p>|<div class="detail-lead">[\s\S]*?<\/div>/, () => introduction);
     page = page.replace(/<section class="visa-price-panel"[\s\S]*?<\/section>/, () => `<section class="visa-price-panel" aria-labelledby="price-title"><div><span class="eyebrow">СТОИМОСТЬ ОФОРМЛЕНИЯ</span><h2 id="price-title">${escape(item.price)}</h2><p>${escape(item.priceDescription)}</p></div><div>${item.priceNotes.map(note => `<p>${escape(note)}</p>`).join('')}</div></section>`);
     await writeFile(path, page);
 }

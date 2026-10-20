@@ -82,6 +82,12 @@ button:disabled { cursor:not-allowed; opacity:.5; }
 .visa-info { display:flex; flex-direction:column; flex:1; }
 .visa-info .visa-description { flex:1; }
 .visa-info > .btn { margin-top:18px; }
+#visas .visa-card { display:flex; flex-direction:column; height:100%; }
+#visas .visa-destination { line-height:1.35; min-height:2.7em; }
+#visas .visa-info > .btn { margin-top:auto; }
+#visas .visa-description { margin-bottom:22px; }
+.detail-lead p + p { margin-top:18px; }
+@media(max-width:768px) { #visas .visa-destination { min-height:0; } }
 .modal-form select { width:100%; padding:12px; border:1px solid var(--glass-border); border-radius:10px; background:var(--bg-base); color:var(--text-dark); font:inherit; }
 .contact-messengers { display:flex; flex-wrap:wrap; gap:12px; margin-top:14px; font-size:.9rem; }
 .contact-messengers a { color:var(--color-teal); text-decoration:underline; }
