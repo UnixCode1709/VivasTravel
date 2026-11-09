@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Prepare a message locally. The visitor sends it in their mail application.
+    // The static site opens an email; the hosted site can enable the same-origin handler.
     if (bookingForm) {
         const consent = bookingForm.querySelector('[name="personalConsent"]');
         const submit = bookingForm.querySelector('[type="submit"]');
@@ -203,29 +203,37 @@ document.addEventListener('DOMContentLoaded', () => {
         consent.addEventListener('change', syncConsent);
         bookingForm.addEventListener('reset', syncConsent);
         syncConsent();
-        bookingForm.addEventListener('submit', (event) => {
+        bookingForm.addEventListener('submit', async (event) => {
             event.preventDefault();
             if (!consent.checked || !bookingForm.reportValidity()) return;
             const values = new FormData(bookingForm);
             const direction = userDirectionInput.value.trim();
+            if (bookingForm.getAttribute('action') === 'application.php') {
+                submit.disabled = true;
+                status.textContent = 'Отправляем заявку…';
+                try {
+                    const result = await fetch('application.php', { method: 'POST', body: values, credentials: 'same-origin', headers: { Accept: 'application/json' } });
+                    const response = await result.json();
+                    if (!result.ok || response.accepted !== true) throw new Error(response.message || 'Не удалось принять заявку.');
+                    bookingForm.reset();
+                    status.textContent = 'Заявка принята. Номер: ' + response.reference;
+                } catch (error) {
+                    status.textContent = 'Не удалось подтвердить приём заявки. Напишите на vivastravel@mail.ru или попробуйте ещё раз.';
+                } finally { submit.disabled = false; }
+                return;
+            }
             const body = ['Имя: ' + values.get('name'), 'Телефон: ' + values.get('phone'),
                 'Почта: ' + values.get('email'), 'Направление: ' + direction,
                 'Комментарий: ' + (values.get('message') || ''),
                 'Согласие на обработку персональных данных: предоставлено.',
                 'Документ: ' + new URL('consent.html', location.href).href].join('\n');
-            const channel = bookingForm.querySelector('[name="contactChannel"]')?.value || 'whatsapp';
-            const href = channel === 'email'
-                ? 'mailto:vivastravel@gmail.com?subject=' + encodeURIComponent('Обращение с сайта: ' + direction) + '&body=' + encodeURIComponent(body)
-                : 'https://wa.me/79628538393?text=' + encodeURIComponent('Заявка с сайта ВИВАС\n' + body);
+            const href = 'mailto:vivastravel@mail.ru?subject=' + encodeURIComponent('Обращение с сайта: ' + direction) + '&body=' + encodeURIComponent(body);
             const link = document.createElement('a');
             link.href = href;
-            if (channel === 'whatsapp') { link.target = '_blank'; link.rel = 'noopener noreferrer'; }
             link.click();
             status.replaceChildren();
             const note = document.createElement('span');
-            note.textContent = channel === 'email'
-                ? 'Проверьте письмо и нажмите «Отправить» в почтовой программе. Менеджер получит заявку после отправки. '
-                : 'Проверьте сообщение и нажмите «Отправить» в WhatsApp. Менеджер получит заявку после отправки. ';
+            note.textContent = 'Проверьте письмо и нажмите «Отправить» в почтовой программе. Менеджер получит заявку после отправки. ';
             const retry = link.cloneNode(); retry.textContent = 'Открыть сообщение ещё раз';
             status.append(note, retry);
         });
