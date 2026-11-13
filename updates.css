@@ -97,3 +97,12 @@ button:disabled { cursor:not-allowed; opacity:.5; }
 @media(max-width:640px) { .modal-content { padding:30px 22px; } }
 @media(max-width:640px) { .visa-price-panel { grid-template-columns:1fr; gap:12px; padding:22px; } .visa-actions { flex-direction:column; } }
 @media(max-width:640px) { .flight-widget-panel { padding:16px; } .widget-consent { padding:16px; } }
+
+/* Footer contrast in both themes. */
+.footer .legal-footer, .footer .footer-brand-desc, .footer .footer-links a, .footer .footer-contacts li, .footer .footer-bottom { color:#e6e6e6; }
+.footer .legal-footer h3 { color:#fff; }
+.footer .legal-footer a, .footer .text-button { color:#70e0dc; }
+.footer .social-links .text-button { font-weight:700; font-size:1rem; border:1px solid #70e0dc; text-decoration:none; }
+.footer .social-links .text-button:hover, .footer .social-links .text-button:focus-visible { color:#fff; background:#176360; }
+.country-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px 24px; list-style:none; padding:0; }
+.country-list a { color:var(--text-dark); text-decoration:underline; text-underline-offset:4px; }
